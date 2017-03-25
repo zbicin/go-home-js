@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ToastType } from './ui/toast/toast.component';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app works!';
+  answers = [
+    'First',
+    'Second',
+    'Third',
+    'Fourth'
+  ];
+  question = 'Here is the question';
 }

@@ -1,0 +1,8 @@
+<div class="list-group">
+  <span class="list-group-item active">
+    What is the answer?
+  </span>
+  <button *ngFor="let answer of answers; let i = index" class="list-group-item" [ngClass]="{active: isSelectedAnswer(i)}" (click)="selectAnswer(i)">
+    {{ answer }}
+  </button>
+</div>
