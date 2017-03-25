@@ -17,11 +17,13 @@
       "test": "test.ts",
       "tsconfig": "tsconfig.app.json",
       "testTsconfig": "tsconfig.spec.json",
-      "prefix": "app",
+      "prefix": "ghj",
       "styles": [
-        "styles.css"
+        "styles.css",
+        "../node_modules/bootswatch/cosmo/bootstrap.css"
       ],
-      "scripts": [],
+      "scripts": [
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
