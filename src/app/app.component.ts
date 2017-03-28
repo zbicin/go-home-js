@@ -15,4 +15,8 @@ export class AppComponent {
     'Fourth'
   ];
   question = 'Here is the question';
+
+  onLogin() {
+    console.log('Successful login');
+  }
 }
