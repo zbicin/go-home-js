@@ -1,10 +1,24 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { HomeComponent } from './home/home.component';
+import { QuizComponent } from './quiz/quiz.component';
+import { CanActivateQuiz } from './shared/can-activate-quiz';
+
 const routes: Routes = [
   {
+    path: 'home',
+    component: HomeComponent
+  },
+  {
+    path: 'quiz',
+    component: QuizComponent,
+    canActivate: [ CanActivateQuiz ]
+  },
+  {
     path: '',
-    children: []
+    redirectTo: '/home',
+    pathMatch: 'full'
   }
 ];
 

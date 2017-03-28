@@ -1,0 +1,11 @@
+<p>
+  Hello {{ playerName }}, quiz works!
+</p>
+
+<p>
+  {{ question.content }}
+</p>
+
+<button (click)="giveAnswer(i);" *ngFor="let answer of question.answers; let i = index">
+    {{ answer }} {{ index }}
+</button>
