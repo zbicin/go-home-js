@@ -19,7 +19,7 @@ import { UiModule } from './ui/ui.module';
     HttpModule,
     AppRoutingModule,
     HomeModule,
-    QuizModule
+    QuizModule,
     UiModule
   ],
   providers: [],
