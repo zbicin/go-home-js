@@ -9,6 +9,7 @@ export class QuizNavigationComponent {
 
   @Input() isNextQuestionDisabled = false;
   @Input() isSendAnswerDisabled = false;
+  @Input() isSubmitDisabled = false;
 
   constructor() { }
 
