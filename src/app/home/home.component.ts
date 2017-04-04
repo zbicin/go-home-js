@@ -11,7 +11,6 @@ import { GameService, GameStatus } from '../shared/game.service';
 })
 export class HomeComponent implements OnDestroy, OnInit {
 
-  public playerName: string;
   private statusSubscritpion: Subscription;
 
   constructor(
@@ -31,8 +30,8 @@ export class HomeComponent implements OnDestroy, OnInit {
     });
   }
 
-  onSubmit() {
-    this.game.start(this.playerName);
+  onLogin(playerName: string) {
+    this.game.start(playerName);
     this.router.navigate(['quiz']);
   }
 

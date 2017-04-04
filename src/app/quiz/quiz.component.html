@@ -1,11 +1,17 @@
-<p>
-  Hello {{ playerName }}, quiz works! Score: {{ score }}
-</p>
+<div class="row">
+  <div class="col-lg-4 col-lg-offset-2">
+  <p>
+    Hello {{ playerName }}, quiz works! Score: {{ score }}
+  </p>
+    <ghj-question-box [question]="question"></ghj-question-box>
+  </div>
+  <div class="col-lg-4">
+    <ghj-answer-box (answerGiven)="giveAnswer($event)" [answers]="question?.answers"></ghj-answer-box>
+  </div>
+</div>
 
-<p>
-  {{ question.content }}
-</p>
-
-<button (click)="giveAnswer(i);" *ngFor="let answer of question.answers; let i = index">
-    {{ answer }} {{ index }}
-</button>
+<div class="row">
+  <div class="col-lg-4 col-lg-offset-4">
+    <ghj-quiz-navigation [isNextQuestionDisabled]="true"></ghj-quiz-navigation>
+  </div>
+</div>

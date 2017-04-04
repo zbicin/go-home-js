@@ -1,4 +1,5 @@
-<form (ngSubmit)="onSubmit()" autocomplete="false">
-  <input type="text" placeholder="Your name" autofocus="true" [(ngModel)]="playerName" id="playerName" name="playerName" required>
-  <button type="submit">Let's go!</button>
-</form>
+<div class="row">
+  <div class="col-lg-2 col-lg-offset-5">
+    <ghj-login-form (login)="onLogin($event)"></ghj-login-form>
+  </div>
+</div>
