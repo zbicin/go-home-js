@@ -12,4 +12,9 @@ import { QuestionsStoreService } from './questions-store.service';
   declarations: [],
   providers: [CanActivateQuiz, GameService, QuestionsStoreService]
 })
-export class SharedModule { }
+export class SharedModule { 
+  constructor() {
+    console.log('SharedModule constructor');
+  }
+
+}

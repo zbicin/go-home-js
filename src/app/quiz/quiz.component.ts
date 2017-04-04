@@ -11,11 +11,13 @@ import { Question } from '../shared/question';
   styleUrls: ['./quiz.component.css']
 })
 export class QuizComponent implements OnInit {
-  private playerName: string;
+  public playerName: string;
   private playerNameSubscription: Subscription;
-  private question: Question;
+  public question: Question;
   private questionSubscription: Subscription;
   private statusSubscritpion: Subscription;
+  public score: number;
+  private scoreSubscription: Subscription;
 
   constructor(
     private game: GameService,
@@ -44,6 +46,10 @@ export class QuizComponent implements OnInit {
       if (gameStatus === GameStatus.Finished) {
         // this.router.navigate(['summary']);
       }
+    });
+
+    this.scoreSubscription = this.game.score.subscribe((score: number) => {
+      this.score = score;
     });
   }
 

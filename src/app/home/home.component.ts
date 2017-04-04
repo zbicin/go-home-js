@@ -33,6 +33,7 @@ export class HomeComponent implements OnDestroy, OnInit {
 
   onSubmit() {
     this.game.start(this.playerName);
+    this.router.navigate(['quiz']);
   }
 
 }
