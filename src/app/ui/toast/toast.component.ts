@@ -1,4 +1,4 @@
-import { animate, Component, Input, OnChanges, transition, trigger, style } from '@angular/core';
+import { animate, Component, Input, OnChanges, SimpleChanges, transition, trigger, style } from '@angular/core';
 
 @Component({
   selector: 'ghj-toast',
@@ -31,7 +31,7 @@ export class ToastComponent implements OnChanges {
     this.show = false;
   }
 
-  ngOnChanges() {
+  ngOnChanges(changes: SimpleChanges) {
     this.show = true;
   }
 
