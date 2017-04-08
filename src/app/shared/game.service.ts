@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable,ReplaySubject,  Subject } from 'rxjs/Rx';
+import { BehaviorSubject, Observable, ReplaySubject,  Subject } from 'rxjs/Rx';
 
 import { Question } from './question';
 import { QuestionsStoreService } from './questions-store.service';
@@ -11,8 +11,8 @@ const dumpValue = (key: string) => {
     if (enableDumping) {
       console.info(key, value);
     }
-  }
-}
+  };
+};
 
 @Injectable()
 export class GameService {

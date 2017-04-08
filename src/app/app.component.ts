@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ToastType } from './ui/toast/toast.component';
 
 @Component({
-  selector: 'app-root',
+  selector: 'ghj-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })

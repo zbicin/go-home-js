@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { GameService, GameStatus } from '../shared/game.service';
 
 @Component({
-  selector: 'app-home',
+  selector: 'ghj-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })

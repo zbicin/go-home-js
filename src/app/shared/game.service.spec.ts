@@ -13,11 +13,11 @@ describe('GameService', () => {
   });
 
   it('should ...', inject([GameService], (service: GameService) => {
-    let log = (what: string) => {
+    const log = (what: string) => {
       return (whatever) => {
         console.log(`${what.toUpperCase()}: ${whatever}`);
-      }
-    }
+      };
+    };
 
     // service.questionCount.subscribe(log('questionCount'));
     // service.questionIndex.subscribe(log('questionIndex'));

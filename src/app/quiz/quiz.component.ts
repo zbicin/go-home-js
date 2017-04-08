@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -6,11 +6,11 @@ import { GameService, GameStatus } from '../shared/game.service';
 import { Question } from '../shared/question';
 
 @Component({
-  selector: 'app-quiz',
+  selector: 'ghj-quiz',
   templateUrl: './quiz.component.html',
   styleUrls: ['./quiz.component.css']
 })
-export class QuizComponent implements OnInit {
+export class QuizComponent implements OnDestroy, OnInit {
   public playerName: string;
   private playerNameSubscription: Subscription;
   public question: Question;
