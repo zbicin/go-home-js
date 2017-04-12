@@ -1,4 +1,12 @@
 export class Question {
+  static fromJson(rawJson: Question) {
+    return new Question(
+      rawJson.content,
+      rawJson.answers,
+      rawJson.correctAnswerIndex
+    );
+  }
+
   constructor(
     public content: string,
     public answers: string[],

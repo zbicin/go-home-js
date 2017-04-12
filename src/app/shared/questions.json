@@ -1,0 +1,92 @@
+[
+  {
+    "content": "What does `typeof NaN` returns?",
+    "answers": [
+      "`'NaN'`",
+      "`'number'`",
+      "`'object'`",
+      "`'undefined'`"
+    ],
+    "correctAnswerIndex": 1
+  },
+  {
+    "content": "Which one of the comparisons will be falsy?",
+    "answers": [
+      "`[] == 0`",
+      "`[] === 0`",
+      "`+[] == 0`",
+      "`+[] === 0`"
+    ],
+    "correctAnswerIndex": 1
+  },
+  {
+    "content": "Which one of those does not return `'object'`?",
+    "answers": [
+      "`typeof null`",
+      "`typeof undefined`",
+      "`typeof []`",
+      "`typeof new Array()`"
+    ],
+    "correctAnswerIndex": 1
+  },
+  {
+    "content": "Which of the expressions will not return `Infinity`?",
+    "answers": [
+      "`+'Infinity'`",
+      "`Number('Infinity')`",
+      "`parseFloat('Infinity')`",
+      "`parseInt('Infinity')`"
+    ],
+    "correctAnswerIndex": 3
+  },
+  {
+    "content": "Which of the expressions will return an `Object` instance?",
+    "answers": [
+      "`'0' && {}`",
+      "`0 && {}`",
+      "`{} && '0'`",
+      "`{} && 0`"
+    ],
+    "correctAnswerIndex": 0
+  },
+  {
+    "content": "What will be the value returned by `typeof undefined` in the end of the following code?\r\n\r\n```\r\ntypeof undefined; // 'undefined'\r\nundefined = 1;\r\ntypeof undefined; // ?\r\n```",
+    "answers": [
+      "`'number'`",
+      "`'undefined'`",
+      "a `TypeError` will be thrown before",
+      "?"
+    ],
+    "correctAnswerIndex": 1
+  },
+  {
+    "content": "Which one of those will return `false`?",
+    "answers": [
+      "`[] == false`",
+      "`'' == false`",
+      "`null == false`",
+      "`{} == false`"
+    ],
+    "correctAnswerIndex": 2
+  },
+  {
+    "content": "Which one of those is an incorrect statement?",
+    "answers": [
+      "`1..toString()`",
+      "`1.toString()`",
+      "`1. .toString()`",
+      "`1 .toString()`"
+    ],
+    "correctAnswerIndex": 1
+  },
+  {
+    "content": "Which one of those returns `false`?",
+    "answers": [
+      "`Boolean({})`",
+      "`Boolean([])`",
+      "`Boolean('false')`",
+      "`Boolean(0)`"
+    ],
+    "correctAnswerIndex": 3
+  }
+]

@@ -1,8 +1,11 @@
+declare const require: any;
+
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 
 import { Question } from './question';
+const QUESTIONS = require('./questions.json').map(Question.fromJson);
 
 const DUMMY_QUESTIONS = [
   new Question('Lorem 0', ['true', 'false', 'false', 'false'], 0),
@@ -18,7 +21,7 @@ export class QuestionsStoreService {
   constructor() { }
 
   getAll(): Observable<Question> {
-    this.cachedQuestions = this.cachedQuestions || DUMMY_QUESTIONS;
+    this.cachedQuestions = this.cachedQuestions || QUESTIONS;
     return Observable.from(this.cachedQuestions);
   }
 
