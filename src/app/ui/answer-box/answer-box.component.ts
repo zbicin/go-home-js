@@ -8,7 +8,9 @@ import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from
 export class AnswerBoxComponent implements OnChanges {
 
   @Input() answers: string[];
+  @Input() correctAnswerIndex: number;
   @Input() disabled = false;
+  @Input() highlightAnswers = false;
 
   @Output() answerGiven = new EventEmitter<number>();
   selectedAnswerIndex: number;
@@ -16,11 +18,25 @@ export class AnswerBoxComponent implements OnChanges {
   constructor() { }
 
   ngOnChanges(changes: SimpleChanges) {
-    this.selectedAnswerIndex = null;
+    if (changes['answers']) {
+      this.selectedAnswerIndex = null;
+    }
   }
 
-  isSelectedAnswer(index: number) {
-    return this.selectedAnswerIndex === index;
+  shouldBeHighlightedAsCorrect(index: number) {
+    const isCorrect = this.correctAnswerIndex === index;
+    return this.highlightAnswers && isCorrect;
+  }
+
+  shouldBeHighlightedAsSelected(index: number) {
+    const isSelected = this.selectedAnswerIndex === index;
+    return !this.highlightAnswers && isSelected;
+  }
+
+  shouldBeHighlightedAsWrong(index: number) {
+    const isSelected = index === this.selectedAnswerIndex;
+    const isWrong = index !== this.correctAnswerIndex;
+    return this.highlightAnswers && isSelected && isWrong;
   }
 
   selectAnswer(index: number) {

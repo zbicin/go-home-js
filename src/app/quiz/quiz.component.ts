@@ -29,6 +29,10 @@ export class QuizComponent implements OnDestroy, OnInit {
     private router: Router
   ) { }
 
+  get areAnswersHighlighted(): boolean {
+    return !this.isNextQuestionDisabled;
+  }
+
   get isAnswerBoxDisabled(): boolean {
     return !this.isNextQuestionDisabled;
   }

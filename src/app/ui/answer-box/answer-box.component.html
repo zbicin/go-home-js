@@ -2,5 +2,6 @@
   <span class="list-group-item active">
     What is the answer?
   </span>
-  <button [disabled]="disabled" *ngFor="let answer of answers; let i = index" class="list-group-item" [ngClass]="{active: isSelectedAnswer(i)}" (click)="selectAnswer(i)" [innerHTML]="answer | MarkdownToHtml"></button>
+  <button class="list-group-item" (click)="selectAnswer(i)" [disabled]="disabled" [innerHTML]="answer | MarkdownToHtml" *ngFor="let answer of answers; let i = index"
+    [ngClass]="{active: shouldBeHighlightedAsSelected(i), 'list-group-item-danger': shouldBeHighlightedAsWrong(i), 'list-group-item-success': shouldBeHighlightedAsCorrect(i)}"></button>
 </div>
