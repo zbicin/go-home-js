@@ -1,11 +1,11 @@
 <div class="row">
   <div class="col-lg-6">
-    <button class="btn btn-block btn-default" [disabled]="isSubmitDisabled">
+    <button class="btn btn-block btn-default" [disabled]="isSubmitAnswerDisabled" (click)="onSubmitClick($event)">
       Submit answer <i class="glyphicon glyphicon-send"></i>
     </button>
   </div>
   <div class="col-lg-6">
-    <button class="btn btn-block btn-primary" [disabled]="isNextQuestionDisabled">
+    <button class="btn btn-block btn-primary" [disabled]="isNextQuestionDisabled" (click)="onNextQuestionClick($event)">
       Next question
       <i class="glyphicon glyphicon-chevron-right"></i>
     </button>

@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Subscription } from 'rxjs/Subscription';
 
 import { GameService, GameStatus } from '../shared/game.service';
@@ -11,10 +12,14 @@ import { Question } from '../shared/question';
   styleUrls: ['./quiz.component.css']
 })
 export class QuizComponent implements OnDestroy, OnInit {
+  public isNextQuestionDisabled = true;
+  public isSubmitAnswerDisabled = true;
+  private nextQuestionClicks = new BehaviorSubject<void>(null);
   public playerName: string;
   private playerNameSubscription: Subscription;
   public question: Question;
-  private questionSubscription: Subscription;
+  private questionAndNextQuestionClickSubscription: Subscription;
+  private selectedAnswerIndex: number;
   private statusSubscritpion: Subscription;
   public score: number;
   private scoreSubscription: Subscription;
@@ -22,14 +27,18 @@ export class QuizComponent implements OnDestroy, OnInit {
   constructor(
     private game: GameService,
     private router: Router
-    ) { }
+  ) { }
 
-  giveAnswer(answerIndex: number) {
-    this.game.giveAnswer(answerIndex);
+  nextQuestion() {
+    this.isNextQuestionDisabled = true;
+    this.nextQuestionClicks.next(null);
+    this.selectedAnswerIndex = null;
   }
 
   ngOnDestroy() {
     this.playerNameSubscription.unsubscribe();
+    this.questionAndNextQuestionClickSubscription.unsubscribe();
+    this.scoreSubscription.unsubscribe();
     this.statusSubscritpion.unsubscribe();
   }
 
@@ -38,9 +47,11 @@ export class QuizComponent implements OnDestroy, OnInit {
       this.playerName = playerName;
     });
 
-    this.questionSubscription = this.game.question.subscribe((question: Question) => {
-      this.question = question;
-    });
+    this.questionAndNextQuestionClickSubscription = this.game.question
+      .zip(this.nextQuestionClicks, (question: Question) => question)
+      .subscribe((question: Question) => {
+        this.question = question;
+      });
 
     this.statusSubscritpion = this.game.status.subscribe((gameStatus: GameStatus) => {
       if (gameStatus === GameStatus.Finished) {
@@ -51,6 +62,17 @@ export class QuizComponent implements OnDestroy, OnInit {
     this.scoreSubscription = this.game.score.subscribe((score: number) => {
       this.score = score;
     });
+  }
+
+  selectAnswer(answerIndex: number) {
+    this.selectedAnswerIndex = answerIndex;
+    this.isSubmitAnswerDisabled = false;
+  }
+
+  submitAnswer() {
+    this.game.giveAnswer(this.selectedAnswerIndex);
+    this.isNextQuestionDisabled = false;
+    this.isSubmitAnswerDisabled = true;
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'ghj-quiz-navigation',
@@ -8,9 +8,18 @@ import { Component, Input, OnInit } from '@angular/core';
 export class QuizNavigationComponent {
 
   @Input() isNextQuestionDisabled = false;
-  @Input() isSendAnswerDisabled = false;
-  @Input() isSubmitDisabled = false;
+  @Input() isSubmitAnswerDisabled = false;
+  @Output() nextQuestion = new EventEmitter<void>();
+  @Output() submitAnswer = new EventEmitter<void>();
 
   constructor() { }
+
+  onNextQuestionClick() {
+    this.nextQuestion.emit();
+  }
+
+  onSubmitClick() {
+    this.submitAnswer.emit();
+  }
 
 }
