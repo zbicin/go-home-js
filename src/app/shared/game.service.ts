@@ -34,7 +34,6 @@ export class GameService {
     this.playerName = new BehaviorSubject(null);
 
     this.questionCount = this.questionsStore.count()
-      .startWith(0)
       .do(dumpValue('questionCount'));
 
     this.questionIndex = this.answerGiven

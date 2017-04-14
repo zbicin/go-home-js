@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 
 import { Question } from './question';
-const QUESTIONS = require('./questions.json').map(Question.fromJson);
+const QUESTIONS = require('./questions.json').map(Question.fromJson).slice(0, 2);
 
 const DUMMY_QUESTIONS = [
   new Question('Lorem 0', ['true', 'false', 'false', 'false'], 0),
@@ -18,21 +18,31 @@ export class QuestionsStoreService {
 
   private cachedQuestions: Question[];
 
-  constructor() { }
+  constructor() {
+    console.log('QuestionsStore constructor');
+   }
 
-  getAll(): Observable<Question> {
+  getAll(): Observable<Question[]> {
     this.cachedQuestions = this.cachedQuestions || QUESTIONS;
-    return Observable.from(this.cachedQuestions);
+    console.log('getAll', this.cachedQuestions);
+    return Observable.of(this.cachedQuestions);
   }
 
   get(questionIndex: number): Observable<Question> {
+    const indexComparator = (q: Question, index: number) => index === questionIndex;
+    const narrowToSingle = (questions: Question[]) => questions.find(indexComparator);
+
     return this.getAll()
-      .filter((question, index) => index === questionIndex);
+      .map(narrowToSingle);
   }
 
   count(): Observable<number> {
+    console.log('count');
     return this.getAll()
-      .count(() => true);
+      .map((questions: Question[]) => {
+        console.log('questions count, all questions', questions);
+        return questions.length;
+      });
   }
 
 }
