@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+
+import { MarkdownToHtmlPipe } from 'markdown-to-html-pipe';
+
 import { AnswerBoxComponent } from './answer-box/answer-box.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { QuestionBoxComponent } from './question-box/question-box.component';
@@ -20,7 +23,10 @@ const COMPONENTS = [
     CommonModule,
     FormsModule
   ],
-  declarations: COMPONENTS,
+  declarations: [
+    ...COMPONENTS,
+    MarkdownToHtmlPipe
+  ],
   exports: COMPONENTS
 })
 export class UiModule { }
