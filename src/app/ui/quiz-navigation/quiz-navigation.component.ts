@@ -14,11 +14,11 @@ export class QuizNavigationComponent {
 
   constructor() { }
 
-  onNextQuestionClick() {
+  onNextQuestionClick(event: any) {
     this.nextQuestion.emit();
   }
 
-  onSubmitClick() {
+  onSubmitClick(event: any) {
     this.submitAnswer.emit();
   }
 
