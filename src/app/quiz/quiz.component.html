@@ -6,7 +6,7 @@
     <ghj-question-box [question]="question.content"></ghj-question-box>
   </div>
   <div class="col-lg-4">
-    <ghj-answer-box (answerGiven)="selectAnswer($event)" [answers]="question?.answers"></ghj-answer-box>
+    <ghj-answer-box (answerGiven)="selectAnswer($event)" [answers]="question?.answers" [disabled]="isAnswerBoxDisabled"></ghj-answer-box>
   </div>
 </div>
 

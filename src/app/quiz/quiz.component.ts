@@ -29,6 +29,10 @@ export class QuizComponent implements OnDestroy, OnInit {
     private router: Router
   ) { }
 
+  get isAnswerBoxDisabled(): boolean {
+    return !this.isNextQuestionDisabled;
+  }
+
   nextQuestion() {
     this.isNextQuestionDisabled = true;
     this.nextQuestionClicks.next(null);

@@ -8,6 +8,8 @@ import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from
 export class AnswerBoxComponent implements OnChanges {
 
   @Input() answers: string[];
+  @Input() disabled = false;
+
   @Output() answerGiven = new EventEmitter<number>();
   selectedAnswerIndex: number;
 
