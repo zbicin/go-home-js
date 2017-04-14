@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, ReplaySubject,  Subject } from 'rxjs/Rx';
+import { BehaviorSubject, Observable, Subject } from 'rxjs/Rx';
 
 import { Question } from './question';
 import { QuestionsStoreService } from './questions-store.service';
@@ -33,12 +33,12 @@ export class GameService {
     this.answerGiven = new Subject();
     this.playerName = new BehaviorSubject(null);
 
-    this.questionCount = Observable.of(0)
-      .merge(this.questionsStore.count())
+    this.questionCount = this.questionsStore.count()
+      .startWith(0)
       .do(dumpValue('questionCount'));
 
-    this.questionIndex = Observable.of(0)
-      .merge(this.answerGiven)
+    this.questionIndex = this.answerGiven
+      .startWith(0)
       .scan((acc, currentValue, index) => index, 0)
       .do(dumpValue('questionIndex'));
 
@@ -54,8 +54,8 @@ export class GameService {
       .zip(this.answerGiven, (q, a) => q.isCorrectAnswer(a))
       .do(dumpValue('answerCorrectness'));
 
-    this.score = Observable.of(0)
-      .merge(this.answerCorrectness)
+    this.score = this.answerCorrectness
+      .startWith(false)
       .map((value) => value ? 1 : 0)
       .scan((acc, currentValue, index) => acc + currentValue, 0)
       .do(dumpValue('score'));
