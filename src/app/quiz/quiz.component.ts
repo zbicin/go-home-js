@@ -63,7 +63,7 @@ export class QuizComponent implements OnDestroy, OnInit {
 
     this.statusSubscritpion = this.game.status.subscribe((gameStatus: GameStatus) => {
       if (gameStatus === GameStatus.Finished) {
-        // this.router.navigate(['summary']);
+        this.router.navigate(['summary']);
       }
     });
 

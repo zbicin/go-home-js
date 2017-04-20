@@ -53,8 +53,8 @@ export class GameService {
       .zip(this.answerGiven, (q, a) => q.isCorrectAnswer(a))
       .do(dumpValue('answerCorrectness'));
 
-    this.score = this.answerCorrectness
-      .startWith(false)
+    this.score = Observable.of(false)
+      .merge(this.answerCorrectness)
       .map((value) => value ? 1 : 0)
       .scan((acc, currentValue, index) => acc + currentValue, 0)
       .do(dumpValue('score'));

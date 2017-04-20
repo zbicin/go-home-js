@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { CanActivateQuiz } from './shared/can-activate-quiz';
+import { SummaryComponent } from './summary/summary.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,11 @@ const routes: Routes = [
   {
     path: 'quiz',
     component: QuizComponent,
+    canActivate: [ CanActivateQuiz ]
+  },
+  {
+    path: 'summary',
+    component: SummaryComponent,
     canActivate: [ CanActivateQuiz ]
   },
   {

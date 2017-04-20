@@ -7,6 +7,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeModule } from './home/home.module';
 import { QuizModule } from './quiz/quiz.module';
+import { SharedModule } from './shared/shared.module';
+import { SummaryModule } from './summary/summary.module';
 import { UiModule } from './ui/ui.module';
 
 @NgModule({
@@ -20,6 +22,8 @@ import { UiModule } from './ui/ui.module';
     AppRoutingModule,
     HomeModule,
     QuizModule,
+    SharedModule,
+    SummaryModule,
     UiModule
   ],
   providers: [],

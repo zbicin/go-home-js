@@ -24,7 +24,6 @@ export class QuestionsStoreService {
 
   getAll(): Observable<Question[]> {
     this.cachedQuestions = this.cachedQuestions || QUESTIONS;
-    console.log('getAll', this.cachedQuestions);
     return Observable.of(this.cachedQuestions);
   }
 
@@ -37,10 +36,8 @@ export class QuestionsStoreService {
   }
 
   count(): Observable<number> {
-    console.log('count');
     return this.getAll()
       .map((questions: Question[]) => {
-        console.log('questions count, all questions', questions);
         return questions.length;
       });
   }
