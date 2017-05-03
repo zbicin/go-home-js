@@ -20,7 +20,7 @@ export class QuestionsStoreService {
 
   constructor() {
     console.log('QuestionsStore constructor');
-   }
+  }
 
   getAll(): Observable<Question[]> {
     this.cachedQuestions = this.cachedQuestions || QUESTIONS;

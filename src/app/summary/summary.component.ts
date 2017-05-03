@@ -28,8 +28,8 @@ export class SummaryComponent implements OnDestroy, OnInit {
     });
 
     this.scoreSubscription = this.game.score.subscribe((score: number) => {
-        this.score = score;
-      });
+      this.score = score;
+    });
   }
 
 }

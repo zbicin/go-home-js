@@ -43,21 +43,29 @@ export class GameService {
 
     this.status = this.playerName
       .combineLatest(this.questionIndex, this.questionCount, this.determineStatus)
-      .do(dumpValue('status'));
+      .do(dumpValue('status'))
+      .publishReplay()
+      .refCount();
 
     this.question = this.questionIndex
       .switchMap((currentIndex) => this.questionsStore.get(currentIndex))
-      .do(dumpValue('question'));
+      .do(dumpValue('question'))
+      .publishReplay()
+      .refCount();
 
     this.answerCorrectness = this.question
       .zip(this.answerGiven, (q, a) => q.isCorrectAnswer(a))
-      .do(dumpValue('answerCorrectness'));
+      .do(dumpValue('answerCorrectness'))
+      .publishReplay()
+      .refCount();
 
     this.score = Observable.of(false)
       .merge(this.answerCorrectness)
       .map((value) => value ? 1 : 0)
       .scan((acc, currentValue, index) => acc + currentValue, 0)
-      .do(dumpValue('score'));
+      .do(dumpValue('score'))
+      .publishReplay()
+      .refCount();
   }
 
   private determineStatus(name, questionIndex, questionsCount): GameStatus {
